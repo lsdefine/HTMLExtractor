@@ -1,6 +1,6 @@
 # HTMLExtractor
 
-# ListExtractor
+## ListExtractor
 Automatically find list items in a webpage with "class" and sub-tree similarity.
 
 ### USAGE
