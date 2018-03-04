@@ -16,12 +16,12 @@ def EditDist(xx, yy):
 	return f[-1][-1]
 			
 class ListExtractor:
-	def __init__(self, page, feature='', verbose=True, minlen=4):
+	def __init__(self, page, selector='', verbose=True, minlen=4):
 		self.treepos = {}
 		self.treesr = []
 		self.soup = BeautifulSoup(page, 'html.parser')
-		if feature != '':
-			self.results = [self.GetResultWithFeature(feature)]
+		if selector != '':
+			self.results = [self.GetResultWithSelector(selector)]
 		else:
 			print('Analyzing...')
 			self.Scan(minlen)
@@ -141,7 +141,7 @@ class ListExtractor:
 			print('-' * 30)
 		print('Total %d lists' % len(self.results))
 
-	def MakeFeature(self, num=0, verbose=False):
+	def MakeSelector(self, num=0, verbose=False):
 		ulist = self.results[num]
 		par = ulist[0].parent
 		iname = ulist[0].name
@@ -164,8 +164,8 @@ class ListExtractor:
 		if len(testps) == 0 or testps[0] != par: return ''
 		return ' '.join([fea1, fea2])		
 
-	def GetResultWithFeature(self, feature):
-		return self.soup.select(feature)
+	def GetResultWithSelector(self, selector):
+		return self.soup.select(selector)
 		
 	def GetResult(self, num=0):
 		return self.results[num]
@@ -173,9 +173,9 @@ class ListExtractor:
 
 if __name__ == '__main__':
 	url = 'https://search.jd.com/Search?keyword=7600k&enc=utf-8&wq=7600k&pvid=fa96fc1671a64649ac9784ab2872c871'
-	#url = 'http://pwnable.kr/play.php'
-	page = GetPage(url)
-	#page = GetFile('4.txt')
+	url = 'http://pwnable.kr/play.php'
+	#page = GetPage(url)
+	page = GetFile('1.txt')
 	ex = ListExtractor(page)
-	print(ex.MakeFeature())
+	print(ex.MakeSelector())
 	print('completed')
