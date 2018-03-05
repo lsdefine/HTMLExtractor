@@ -12,13 +12,10 @@ Automatically find list items in a webpage with "class" and sub-tree similarity.
 # find lists in the page automatically
 >>> from ListExtractor import ListExtractor
 >>> ex = ListExtractor(page)   # show extraction informations, with abstract texts 
-List 1: 97 items
-<div style="display:none">
-    <a href="//club.jd.com/rank/655/e69c8de58aa1e68081e5baa6e5a5bd_2.html">
-        服务态度好
-    <a href="//club.jd.com/rank/655/e59381e8b4a8e580bce5be97e4bfa1e8b596_2.html">
-        品质值得信赖
 	...
+------------------------------
+List 1: 97 items
+        ...
 ------------------------------
 List 0: 30 items
 <ul class="gl-warp clearfix" data-tpl="3">
@@ -31,7 +28,9 @@ List 0: 30 items
 	...
 >>>  
 >>> ex.GetResult()  # return List 0 as BeautifulSoup elements list
+[element1, element2, ...]
 >>> ex.GetResult(3) # return List 3 as BeautifulSoup elements list (the estimated best one is List 0)
+[element1, element2, ...]
 
 >>> ex.MakeSelector(0)   # return jQuery selector of List 0, return '' if failed
 'ul.gl-warp.clearfix li.gl-item'
